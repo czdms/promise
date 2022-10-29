@@ -1,0 +1,11 @@
+<script>
+    let promise = new Promise((resolve,reject)=>{
+        reject("元龙")
+    })
+
+    promise.then(res=>{
+        console.log("res:",res)
+    }).catch(err=>{
+        console.log("err:",err)
+    })
+</script>

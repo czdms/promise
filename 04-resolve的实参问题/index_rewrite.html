@@ -1,0 +1,26 @@
+<script>
+
+    let p = new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+           //resolve("p的resolve")
+           reject("p的reject")
+        },2000)
+    })
+
+    let promise = new Promise((resolve,reject)=>{
+        //resolve("命运石之门")
+        //resolve(p)
+        resolve({
+            then(reslove,reject) {
+               // reslove("狼与香辛料")
+               reject("eav")
+            }
+        })
+    })
+
+    promise.then(res=>{
+        console.log("res: ", res)
+    },err=>{
+        console.log("err: ", err)
+    })
+</script>

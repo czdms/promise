@@ -1,0 +1,27 @@
+<script>
+    // (1)  如果上一个then返回的是一个普通数据，包含undefined，新的promise是成功的promise
+    // (2)  如果上一个then返回的是一个promise，新的promise是成功还是失败取决于返回的promise
+    // (3)  如果上一个then返回的是一个thenable，新的promise是成功还是失败取决于返回的thenable
+    // (4)  如果上一个then抛出一个错误，新的promise失败的promise 
+
+    let p = new Promise((resolve,reject)=>{
+        //resolve("success")
+        reject("error")
+    });
+
+    let promise = new Promise((resolve,reject)=>{
+        resolve(p)
+        //reject("error")
+    });
+
+    promise.then(res1=>{
+        console.log("res1: ",res1)
+    },err1=>{
+        console.log("err1: ",err1)
+    }).then(res2=>{
+        console.log("res2: ",res2)
+    },err2=>{
+        console.log("err2: ",err2)
+    });
+
+</script>

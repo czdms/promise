@@ -1,0 +1,81 @@
+<!-- <script>
+    let promise = new Promise((resolve,reject)=>{
+        resolve("宝宝")
+    })
+
+    promise.then(res=>{
+        console.log("res1:",res)
+        return "666"
+    },err1=>{
+        console.log("err1:",err1)
+    }).then(null,err=>{
+        console.log("err2:", err)
+    }).then(res=>{
+        //不管成功还是失败，上一个then没有处理，就会顺延到下一个then中
+        console.log("res3:",res)
+    })
+</script> -->
+
+<!-- <script>
+    let promise = new Promise((resolve,reject)=>{
+        resolve("宝宝")
+    })
+
+    promise.then(res=>{
+        console.log("res1:",res)
+        return "666"
+    },err1=>{
+        console.log("err1:",err1)
+    }).then(null,err=>{
+        console.log("err2:", err)
+    })
+    .then(null,null)
+    .then(res=>{
+        console.log("res3:",res);
+    },err=>{
+        console.log("err3:",err)
+    })
+</script> -->
+
+<script>
+    //let promise = new Promise((resolve,reject)=>{
+    //    resolve("宝宝")
+    //})
+    //promise.then(res=>{
+    //    console.log("res1:",res)
+    //    throw new Error("我是一个错误")
+    //},err=>{
+    //    console.log("err1:",err)
+    //}).then(res=>{
+    //    console.log("res2:",res)
+    //},null).then(null,err=>{
+    //    console.log("err3:",err)
+    //}) 
+
+    //let promise = new Promise((resolve,reject)=>{
+    //    resolve("宝宝")
+    //})
+    //promise.then(res=>{
+    //    console.log("res1:",res)
+    //    throw new Error("我是一个错误")
+    //},err=>{
+    //    console.log("err1:",err)
+    //}).then(res=>{
+    //    console.log("res2:",res)
+    //}).catch(err=>{
+    //    console.log("err3:",err)
+    //}) 
+
+    let promise = new Promise((resolve,reject)=>{
+        //resolve("宝宝")
+        reject("没钱")
+    })
+    //当then中没有处理成功或失败的回调时，then会顺延，直到有一个then会处理
+    //catch是then的语法糖，catch智慧处理失败的回调，所以在then中可以一直不处理失败的回调，最后调catch处理
+    promise.then(res=>{
+        console.log("res:",res)
+    }).catch(err=>{
+        console.log("err:",err)
+    })
+
+</script>

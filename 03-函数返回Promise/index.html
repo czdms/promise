@@ -1,0 +1,37 @@
+<script>
+  function execCode(counter) {
+      let p = new Promise((resolve,reject) => {
+          //在执行器中写异步代码
+          setTimeout(()=> {
+
+              if(counter > 0) {
+                  let t = 0;
+                  for(let i = 0; i <= counter; i++) {
+                      t += i;
+                  }
+                  //成功的结果:t
+                  resolve(t)
+              }
+              else {
+                  //失败了
+                  reject(`${counter}有问题`)
+              }
+          },3000)
+      })
+
+      return p
+  }
+
+  //Promise是一个对象，对象中有一个方法，叫then
+  //通过then方法，就可以得到成功或失败的结果
+  //then需要传递两个回调函数，如果Promise成功了，掉第一个回调函数
+  //失败了，调第二个回调函数
+  let p = execCode(100);
+  //调第一个，这个回调的参数，就是成功的结果
+  //调第二个，这个回调的参数，就是失败的结果
+  p.then((value)=>{
+      console.log("成功的结果",value)
+  },(rason)=>{
+      console.log("失败的结果",reason)
+  })
+</script>

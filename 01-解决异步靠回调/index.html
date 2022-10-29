@@ -1,0 +1,33 @@
+<script>
+    function execCode(count,successCallback,failureCallback) {
+        setTimeout(() => {
+            if (count > 0) {
+                let total = 0
+                for(let i = 0; i <= count; i++) {
+                    total += i
+                }
+                successCallback(total)
+            }
+            else {
+                failureCallback(`${count}不能为负数`)
+            }
+        },3000)
+    }
+
+
+    //在ES6之前，解决异步靠回调函数
+    //现在靠Promise asyns+await
+    execCode(100,(value)=>{
+        console.log("成功了：",value)
+    },(err)=>{
+        console.log(err)
+    })
+
+    execCode(-100,(value)=>{
+        console.log("成功了：",value)
+    },(err)=>{
+        console.log(err)
+    })
+
+    
+</script>
